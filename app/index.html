@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	</head>
 	<body>
-		Welcome!
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<aside ng-controller="LocationController as locationCtrl" class="span2">
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="loc in locationCtrl.locations">{{loc.name}}</li>
+					</ul>
+					<input type="text" ng-model="locationCtrl.newLocationName">
+					<button ng-click="locationCtrl.submit()">Button</button>
+				</aside>
+				<section class="span4">
+					Junk
+				</section>
+			</div>
+		</div>
 		<script src="bower_components/angular/angular.min.js"></script>
+		<script src="app.js"></script>	
+		<script src="location.js"></script>	
 	</body>
 </html>
