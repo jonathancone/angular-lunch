@@ -1,20 +1,52 @@
 <!DOCTYPE html>
 <html ng-app="app">
 	<head>
+		<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	</head>
 	<body>
-		<div class="container-fluid">
-			<div class="row-fluid">
-				<aside ng-controller="LocationController as locationCtrl" class="span2">
+		<nav></nav>
+		<div class="container" style="width: 70%; padding: 20px;">
+			<div class="row">
+				<aside ng-controller="LocationController as locationCtrl" class="col-xs-6 col-md-4">
 					<ul class="list-group">
-						<li class="list-group-item" ng-repeat="loc in locationCtrl.locations">{{loc.name}}</li>
+						<li class="list-group-item" ng-repeat="loc in locationCtrl.locations | orderBy:'-(votes.up-votes.down)'">
+							<h4>{{loc.name}}</h3>
+							<h6>{{loc.address}}</h6>
+							<button class="btn btn-success" ng-click="locationCtrl.upVote(loc)">
+								<span class="glyphicon glyphicon-thumbs-up" ng-model="loc.votes.up"></span>
+								{{loc.votes.up}}
+							</button>
+							<button class="btn btn-danger" ng-click="locationCtrl.downVote(loc)">
+								<span class="glyphicon glyphicon-thumbs-down" ng-model="loc.votes.down"></span>
+								{{loc.votes.down}}
+							</button>
+						</li>
 					</ul>
-					<input type="text" ng-model="locationCtrl.newLocationName">
-					<button ng-click="locationCtrl.submit()">Button</button>
+					<div style="text-align: right;padding-bottom:10px;">
+						<button class="btn btn-warning" ng-click="locationCtrl.resetVotes()">
+							<span class="glyphicon glyphicon-trash"></span>
+							Reset Votes
+						</button>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							New Location
+						</div>
+						<div class="panel-body">
+							<form class="input-group" name="newLocationForm">
+								<input type="text" ng-model="locationCtrl.newLocation.name" required placeholder="Name">
+								<input type="text" ng-model="locationCtrl.newLocation.address" required placeholder="Address">
+								<button ng-click="locationCtrl.addLocation()" class="btn btn-default">Add</button>
+							</form>
+						</div>
+					</div>
 				</aside>
-				<section class="span4">
-					Junk
+				<section class="col-xs-12 col-md-8">
+					
 				</section>
 			</div>
 		</div>
