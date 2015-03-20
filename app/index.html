@@ -6,9 +6,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+		<style type="text/css">
+      		html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    	</style>
 	</head>
 	<body>
-		<nav></nav>
+
 		<div class="container" style="width: 70%; padding: 20px;">
 			<div class="row">
 				<aside ng-controller="LocationController as locationCtrl" class="col-xs-6 col-md-4">
@@ -45,13 +48,13 @@
 						</div>
 					</div>
 				</aside>
-				<section class="col-xs-12 col-md-8">
-					
-				</section>
+				<div id="map-canvas" class="col-xs-12 col-md-8" style="height: 800px"></div>
 			</div>
 		</div>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBBoCzFA2wtbS4cye4re2Amv-GihTSE1O4"></script>
 		<script src="bower_components/angular/angular.min.js"></script>
 		<script src="app.js"></script>	
 		<script src="location.js"></script>	
+		<script src="map.js"></script>
 	</body>
 </html>
