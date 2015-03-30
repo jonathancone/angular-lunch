@@ -4,7 +4,6 @@ var appLocation = angular.module('app.location', []);
 
 appLocation.service('LocationService', function() {
 
-
 	this.list = function() {
 		return [
 		{ name: "Dave's Downtown", address: "900 2nd Ave S, Minneapolis, MN 55402", votes: {up: 0, down: 0} },
